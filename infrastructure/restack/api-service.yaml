@@ -1,0 +1,20 @@
+name: api-service
+type: container
+env:
+  - name: DATABASE_URL
+    value: ${DATABASE_URL}
+  - name: JWT_SECRET
+    value: ${JWT_SECRET}
+  - name: AGENT_SERVICE_URL
+    value: https://agent.devagent.${RESTACK_ORG}.restack.io
+  - name: GIT_SERVICE_URL
+    value: https://git.devagent.${RESTACK_ORG}.restack.io
+resources:
+  cpu: 0.5
+  memory: 1Gi
+ports:
+  - 8000:8000
+health:
+  path: /health
+  initialDelaySeconds: 10
+  periodSeconds: 30

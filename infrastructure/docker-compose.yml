@@ -1,0 +1,77 @@
+version: '3.8'
+
+services:
+  frontend:
+    build: 
+      context: ../frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80"
+    environment:
+      - REACT_APP_API_URL=http://localhost:8000
+    depends_on:
+      - api-service
+
+  api-service:
+    build: 
+      context: ../api-service
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - AGENT_SERVICE_URL=http://agent-service:8001
+      - GIT_SERVICE_URL=http://git-service:8004
+      - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/devagent
+      - JWT_SECRET=your_jwt_secret_here
+    depends_on:
+      - postgres
+      - redis
+
+  agent-service:
+    build: 
+      context: ../agent-service
+      dockerfile: Dockerfile
+    ports:
+      - "8001:8001"
+    environment:
+      - CLAUDE_API_KEY=${CLAUDE_API_KEY}
+      - GIT_SERVICE_URL=http://git-service:8004
+      - REDIS_URL=redis://redis:6379/0
+    depends_on:
+      - redis
+
+  git-service:
+    build: 
+      context: ../git-service
+      dockerfile: Dockerfile
+    ports:
+      - "8004:8004"
+    environment:
+      - GITHUB_TOKEN=${GITHUB_TOKEN}
+      - GITLAB_TOKEN=${GITLAB_TOKEN}
+      - REPOS_DIR=/tmp/repos
+    volumes:
+      - git-repos:/tmp/repos
+
+  postgres:
+    image: postgres:14
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=devagent
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+
+volumes:
+  postgres-data:
+  redis-data:
+  git-repos:
