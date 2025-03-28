@@ -81,7 +81,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: deploy-api
     steps:
-      - name: Checkout code
+      - name: Deploy Agent Service
         uses: actions/checkout@v3
 
       - name: Set up Docker Buildx
@@ -113,7 +113,7 @@ jobs:
           image: registry.restack.io/${{ secrets.RESTACK_ORG }}/devagent/agent:latest
           env: |
             CLAUDE_API_KEY=${{ secrets.CLAUDE_API_KEY }}
-            DB_CONNECTION_STRING=${{ secrets.DB_CONNECTION_STRING }}
+            DATABASE_URL=${{ secrets.DATABASE_URL }}
 
   deploy-git-service:
     runs-on: ubuntu-latest
