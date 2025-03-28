@@ -1,6 +1,5 @@
 # api-service/app/models/user.py
-
-from sqlalchemy import Boolean, Column, String, DateTime
+from sqlalchemy import Boolean, Column, String, DateTime, Text
 from sqlalchemy.sql import func
 from app.core.db import Base
 import uuid
@@ -14,5 +13,5 @@ class User(Base):
     hashed_password = Column(String(255), nullable=False)
     is_active = Column(Boolean, default=True)
     is_superuser = Column(Boolean, default=False)
-    created_at = Column(DateTime(timezone=True), server_default=func.now())
-    updated_at = Column(DateTime(timezone=True), onupdate=func.now())
+    created_at = Column(DateTime, server_default=func.now())
+    updated_at = Column(DateTime, onupdate=func.now())

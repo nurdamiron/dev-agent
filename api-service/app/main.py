@@ -1,3 +1,5 @@
+# api-service/app/main.py
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import logging
@@ -39,6 +41,21 @@ async def health_check():
     Проверка состояния сервиса.
     """
     return {"status": "ok"}
+
+@app.get("/db-test")
+async def db_test():
+    """
+    Проверка соединения с базой данных.
+    """
+    try:
+        from sqlalchemy import text
+        from app.core.db import engine
+        
+        with engine.connect() as connection:
+            result = connection.execute(text("SELECT 1"))
+            return {"status": "ok", "message": "Подключение к базе данных успешно"}
+    except Exception as e:
+        return {"status": "error", "message": f"Ошибка подключения к базе данных: {str(e)}"}
 
 if __name__ == "__main__":
     import uvicorn
