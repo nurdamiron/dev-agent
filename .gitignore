@@ -1,0 +1,164 @@
+# Системные файлы
+.DS_Store
+Thumbs.db
+desktop.ini
+.directory
+
+# Среды разработки
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+*.code-workspace
+.vs/
+*.swp
+*.swo
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.env
+.venv
+.python-version
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+.coverage
+htmlcov/
+.tox/
+.coverage.*
+.cache/
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+pytest_cache/
+pytest.ini
+
+# JavaScript/React
+node_modules/
+.npm
+/build
+/dist
+/.next
+.pnp/
+.pnp.js
+*.tsbuildinfo
+
+# Логи
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Переменные окружения
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.envrc
+
+# Docker
+.docker/
+volumes/
+*.gz
+*.tar
+.docker-compose.override.yml
+
+# Временные файлы
+tmp/
+temp/
+*.tmp
+*.bak
+*.swp
+*~
+
+# Git
+.git/
+.git-rewrite/
+
+# Секреты и ключи (дополнительно для безопасности)
+*.pem
+*.key
+*.p12
+*.pfx
+*.cer
+*.crt
+*.der
+*.priv
+
+# Файлы базы данных
+*.sqlite
+*.sqlite3
+*.db
+
+# Кэш
+.eslintcache
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+.sass-cache/
+.parcel-cache/
+
+# Архивы
+*.zip
+*.rar
+*.7z
+*.gz
+*.tgz
+*.bzip
+*.bz2
+*.xz
+*.lzma
+
+# Специфичные для нашего проекта директории
+/api-service/app/__pycache__/
+/agent-service/app/__pycache__/
+/git-service/app/__pycache__/
+/frontend/coverage/
+/frontend/build/
+/frontend/dist/
+
+# Директории для Git-репозиториев
+/tmp/repos/
+/git-service/repos/
+
+# Локальные файлы конфигурации
+*.local.yml
+*.local.yaml
+*.local.json
+local_settings.py
+
+# Директории с данными
+data/
+uploads/
+/media/
+/static/
+
+# Ключи API и токены (для дополнительной безопасности)
+**/secrets.yaml
+**/secrets.yml
+**/secrets.json
+**/tokens.json
