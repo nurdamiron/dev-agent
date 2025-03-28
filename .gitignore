@@ -161,4 +161,5 @@ uploads/
 **/secrets.yaml
 **/secrets.yml
 **/secrets.json
-**/tokens.json
+**/tokens.json*.env
+**/.env
