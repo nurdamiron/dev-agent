@@ -1,3 +1,10 @@
+# Переменные окружения - строгое правило
+**/.env
+**/.env.*
+.env
+.env.*
+*.env
+
 # Системные файлы
 .DS_Store
 Thumbs.db
@@ -23,7 +30,6 @@ __pycache__/
 env/
 venv/
 ENV/
-.env
 .venv
 .python-version
 build/
@@ -72,14 +78,6 @@ lerna-debug.log*
 pip-log.txt
 pip-delete-this-directory.txt
 
-# Переменные окружения
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-.envrc
-
 # Docker
 .docker/
 volumes/
@@ -95,11 +93,7 @@ temp/
 *.swp
 *~
 
-# Git
-.git/
-.git-rewrite/
-
-# Секреты и ключи (дополнительно для безопасности)
+# Секреты и ключи
 *.pem
 *.key
 *.p12
@@ -122,25 +116,6 @@ temp/
 .sass-cache/
 .parcel-cache/
 
-# Архивы
-*.zip
-*.rar
-*.7z
-*.gz
-*.tgz
-*.bzip
-*.bz2
-*.xz
-*.lzma
-
-# Специфичные для нашего проекта директории
-/api-service/app/__pycache__/
-/agent-service/app/__pycache__/
-/git-service/app/__pycache__/
-/frontend/coverage/
-/frontend/build/
-/frontend/dist/
-
 # Директории для Git-репозиториев
 /tmp/repos/
 /git-service/repos/
@@ -151,15 +126,8 @@ temp/
 *.local.json
 local_settings.py
 
-# Директории с данными
-data/
-uploads/
-/media/
-/static/
-
-# Ключи API и токены (для дополнительной безопасности)
+# API ключи и токены
 **/secrets.yaml
 **/secrets.yml
 **/secrets.json
-**/tokens.json*.env
-**/.env
+**/tokens.json
